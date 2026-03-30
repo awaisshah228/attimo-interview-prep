@@ -1,0 +1,7 @@
+node_modules/
+.next/
+.env*.local
+.DS_Store
+.claude/
+practice-app/node_modules/
+practice-app/.next/
