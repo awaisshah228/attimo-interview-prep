@@ -6,3 +6,7 @@ storybook-static/
 .env*.local
 *.tsbuildinfo
 next-env.d.ts
+test-results/
+playwright-report/
+blob-report/
+coverage/

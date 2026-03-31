@@ -12,12 +12,21 @@
     "type-check": "turbo run type-check",
     "storybook": "turbo run storybook",
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
-    "clean": "turbo run clean && rm -rf node_modules"
+    "test": "turbo run test",
+    "test:e2e": "turbo run test:e2e",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "prepare": "lefthook install"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@vitejs/plugin-react": "^6.0.1",
+    "jsdom": "^29.0.1",
+    "lefthook": "^2.1.4",
     "prettier": "^3.4.0",
     "prettier-plugin-tailwindcss": "^0.6.0",
-    "turbo": "^2.5.0"
+    "turbo": "^2.5.0",
+    "vitest": "^4.1.2"
   },
   "packageManager": "yarn@1.22.22",
   "engines": {

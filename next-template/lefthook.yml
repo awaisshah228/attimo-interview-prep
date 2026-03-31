@@ -1,0 +1,16 @@
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      glob: "*.{ts,tsx,js,jsx}"
+      run: npx turbo run lint --affected
+    type-check:
+      run: npx turbo run type-check --affected
+    format:
+      glob: "*.{ts,tsx,js,jsx,json,md,css}"
+      run: npx prettier --check {staged_files}
+
+pre-push:
+  commands:
+    test:
+      run: npx turbo run build --affected
