@@ -5,6 +5,7 @@ import { getTodos } from "./actions";
 import { AddForm } from "./add-form";
 import { TodoList } from "./todo-list";
 import { TodoProduction } from "./todo-production";
+import { TodoFormik } from "./todo-formik";
 
 export default async function TodoPage() {
   const todos = await getTodos();
@@ -14,8 +15,8 @@ export default async function TodoPage() {
       <BackLink />
       <h1 className="mt-4 text-2xl font-bold">02 — Todo App</h1>
       <p className="mt-2 text-sm text-zinc-400">
-        Full CRUD with optimistic UI. Scratch uses Server Actions +
-        useOptimistic. Production uses Zustand + react-hook-form + Zod.
+        Full CRUD with optimistic UI. Three versions: from scratch, RHF + Zod,
+        and Formik + Yup.
       </p>
 
       <div className="mt-8">
@@ -31,8 +32,12 @@ export default async function TodoPage() {
               ),
             },
             {
-              label: "With Zustand + RHF + Zod",
+              label: "RHF + Zod",
               content: <TodoProduction />,
+            },
+            {
+              label: "Formik + Yup",
+              content: <TodoFormik />,
             },
           ]}
         />
@@ -40,10 +45,11 @@ export default async function TodoPage() {
 
       <Concepts
         items={[
-          "Scratch: Server Actions, useOptimistic, revalidatePath, progressive enhancement",
-          "Production: Zustand (global state), react-hook-form (perf), Zod (validation)",
-          "Zustand — no Context boilerplate, selector-based re-renders",
-          "react-hook-form — uncontrolled inputs = fewer re-renders",
+          "Scratch: Server Actions, useOptimistic, revalidatePath",
+          "RHF + Zod: uncontrolled inputs (fewer re-renders), schema inference",
+          "Formik + Yup: controlled inputs, declarative <Field>/<ErrorMessage>",
+          "Formik re-renders on every keystroke — RHF doesn't",
+          "Yup is the traditional Formik validator, Zod pairs with RHF",
         ]}
       />
     </main>
