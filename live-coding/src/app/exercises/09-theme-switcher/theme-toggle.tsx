@@ -9,7 +9,7 @@ export function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem("theme") as Theme | null;
+    const stored = localStorage.getItem("scratch-theme") as Theme | null;
     const preferred = window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"
       : "light";
@@ -20,17 +20,19 @@ export function ThemeToggle() {
   }, []);
 
   const applyTheme = (t: Theme) => {
-    document.documentElement.classList.toggle("light", t === "light");
+    // shadcn uses .dark class on <html> for dark mode
+    // When .dark is absent, it falls back to :root (light)
+    document.documentElement.classList.toggle("dark", t === "dark");
   };
 
   const toggle = () => {
     const next: Theme = theme === "dark" ? "light" : "dark";
     setTheme(next);
-    localStorage.setItem("theme", next);
+    localStorage.setItem("scratch-theme", next);
     applyTheme(next);
   };
 
-  if (!mounted) return null; // avoid hydration mismatch
+  if (!mounted) return null;
 
   return (
     <button

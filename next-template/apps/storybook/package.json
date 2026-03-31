@@ -1,0 +1,32 @@
+{
+  "name": "@repo/storybook",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build": "storybook build",
+    "clean": "rm -rf storybook-static .turbo"
+  },
+  "dependencies": {
+    "@repo/ui": "*",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@repo/tailwind-config": "*",
+    "@repo/typescript-config": "*",
+    "@storybook/addon-essentials": "^8.6.0",
+    "@storybook/addon-interactions": "^8.6.0",
+    "@storybook/addon-links": "^8.6.0",
+    "@storybook/addon-themes": "^8.6.0",
+    "@storybook/blocks": "^8.6.0",
+    "@storybook/react": "^8.6.0",
+    "@storybook/react-vite": "^8.6.0",
+    "@tailwindcss/vite": "^4",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "storybook": "^8.6.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

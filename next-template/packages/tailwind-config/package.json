@@ -1,0 +1,13 @@
+{
+  "name": "@repo/tailwind-config",
+  "version": "0.0.0",
+  "private": true,
+  "files": [
+    "globals.css"
+  ],
+  "dependencies": {
+    "shadcn": "^4.1.1",
+    "tailwindcss": "^4",
+    "tw-animate-css": "^1"
+  }
+}

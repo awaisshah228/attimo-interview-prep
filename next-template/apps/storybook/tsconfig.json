@@ -1,0 +1,10 @@
+{
+  "extends": "@repo/typescript-config/react-library.json",
+  "compilerOptions": {
+    "paths": {
+      "@repo/ui/*": ["../../packages/ui/src/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", ".storybook/**/*.ts"],
+  "exclude": ["node_modules"]
+}
