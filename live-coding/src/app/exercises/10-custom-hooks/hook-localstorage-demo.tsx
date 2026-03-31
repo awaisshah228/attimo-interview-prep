@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocalStorage } from "@/lib/hooks";
+import { useLocalStorage } from "@/hooks/use-local-storage";
 
 export function HookLocalStorageDemo() {
   const [count, setCount] = useLocalStorage("hook-demo-count", 0);

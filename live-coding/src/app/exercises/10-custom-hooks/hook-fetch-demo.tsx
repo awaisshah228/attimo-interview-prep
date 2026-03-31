@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useFetch } from "@/lib/hooks";
+import { useFetch } from "@/hooks/use-fetch";
 import type { Suggestion } from "@/lib/types";
 
 export function HookFetchDemo() {

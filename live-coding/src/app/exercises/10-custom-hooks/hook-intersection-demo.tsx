@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { useIntersectionObserver } from "@/lib/hooks";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
 export function HookIntersectionDemo() {
   const boxRef = useRef<HTMLDivElement>(null);

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { useClickOutside } from "@/lib/hooks";
+import { useClickOutside } from "@/hooks/use-click-outside";
 
 export function HookClickOutsideDemo() {
   const [isOpen, setIsOpen] = useState(false);

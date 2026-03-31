@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useDebounce } from "@/lib/hooks";
+import { useDebounce } from "@/hooks/use-debounce";
 
 export function HookDebounceDemo() {
   const [input, setInput] = useState("");

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMediaQuery } from "@/lib/hooks";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 export function HookMediaQueryDemo() {
   const isMobile = useMediaQuery("(max-width: 640px)");

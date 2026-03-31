@@ -22,7 +22,7 @@ export default function CustomHooksPage() {
       <BackLink />
       <h1 className="mt-4 text-2xl font-bold">10 — Custom Hooks</h1>
       <p className="mt-2 text-sm text-zinc-400">
-        Scratch: hand-written hooks in <code className="text-zinc-300">lib/hooks.ts</code>.
+        Scratch: hand-written hooks in <code className="text-zinc-300">src/hooks/</code>.
         Production: usehooks-ts + TanStack Query (battle-tested, maintained).
       </p>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { useDebounce } from "@/lib/hooks";
+import { useDebounce } from "@/hooks/use-debounce";
 import type { Suggestion } from "@/lib/types";
 
 export function Autocomplete() {
