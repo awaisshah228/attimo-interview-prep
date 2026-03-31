@@ -11,6 +11,7 @@
     "lint": "turbo run lint",
     "type-check": "turbo run type-check",
     "storybook": "turbo run storybook",
+    "ui:add": "yarn workspace @repo/ui ui add",
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "test": "turbo run test",
     "test:e2e": "turbo run test:e2e",
