@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { create } from "zustand";
+import { devtools } from "zustand/middleware";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardFooter } from "@/components/ui/card";
@@ -32,25 +33,42 @@ type TodoStore = {
   remove: (id: string) => void;
 };
 
-const useTodoStore = create<TodoStore>((set) => ({
-  todos: [
-    { id: "1", title: "Learn Zustand for state management", completed: true },
-    { id: "2", title: "Use react-hook-form + zod", completed: false },
-    { id: "3", title: "Compare with scratch version", completed: false },
-  ],
-  add: (title) =>
-    set((s) => ({
-      todos: [...s.todos, { id: crypto.randomUUID(), title, completed: false }],
-    })),
-  toggle: (id) =>
-    set((s) => ({
-      todos: s.todos.map((t) =>
-        t.id === id ? { ...t, completed: !t.completed } : t
-      ),
-    })),
-  remove: (id) =>
-    set((s) => ({ todos: s.todos.filter((t) => t.id !== id) })),
-}));
+const useTodoStore = create<TodoStore>()(
+  devtools(
+    (set) => ({
+      todos: [
+        { id: "1", title: "Learn Zustand for state management", completed: true },
+        { id: "2", title: "Use react-hook-form + zod", completed: false },
+        { id: "3", title: "Compare with scratch version", completed: false },
+      ],
+      add: (title) =>
+        set(
+          (s) => ({
+            todos: [...s.todos, { id: crypto.randomUUID(), title, completed: false }],
+          }),
+          false,
+          "add"
+        ),
+      toggle: (id) =>
+        set(
+          (s) => ({
+            todos: s.todos.map((t) =>
+              t.id === id ? { ...t, completed: !t.completed } : t
+            ),
+          }),
+          false,
+          "toggle"
+        ),
+      remove: (id) =>
+        set(
+          (s) => ({ todos: s.todos.filter((t) => t.id !== id) }),
+          false,
+          "remove"
+        ),
+    }),
+    { name: "TodoStore", enabled: process.env.NODE_ENV === "development" }
+  )
+);
 
 function AddForm() {
   const add = useTodoStore((s) => s.add);

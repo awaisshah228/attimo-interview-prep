@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useDebounceValue } from "usehooks-ts";
 import {
   Command,
   CommandInput,
@@ -24,17 +25,18 @@ import type { Suggestion } from "@/lib/types";
  */
 export function AutocompleteProduction() {
   const [query, setQuery] = useState("");
+  const [debouncedQuery] = useDebounceValue(query, 300);
   const [selected, setSelected] = useState<Suggestion | null>(null);
 
   const { data: results = [], isLoading } = useQuery<Suggestion[]>({
-    queryKey: ["search", query],
+    queryKey: ["search", debouncedQuery],
     queryFn: async ({ signal }) => {
-      const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`, {
+      const res = await fetch(`/api/search?q=${encodeURIComponent(debouncedQuery)}`, {
         signal,
       });
       return res.json();
     },
-    enabled: query.trim().length > 0,
+    enabled: debouncedQuery.trim().length > 0,
     staleTime: 30_000,
     placeholderData: (prev) => prev,
   });
