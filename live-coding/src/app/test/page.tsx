@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Skeleton } from "@/components/ui/skeleton"
 import { useDebounce } from "@/hooks/use-debounce"
 
 // --- Types ---
@@ -124,9 +125,28 @@ export default function TableSearch() {
         className="relative h-[600px] overflow-auto rounded-md border"
       >
         {isLoading ? (
-          <div className="flex items-center justify-center h-full">
-            Loading...
-          </div>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                {columns.map((col, i) => (
+                  <TableHead key={i} style={{ width: col.size }}>
+                    <Skeleton className="h-4 w-3/4" />
+                  </TableHead>
+                ))}
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {Array.from({ length: 10 }).map((_, rowIndex) => (
+                <TableRow key={rowIndex}>
+                  {columns.map((col, colIndex) => (
+                    <TableCell key={colIndex} style={{ width: col.size }}>
+                      <Skeleton className="h-4 w-full" />
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
         ) : (
           <Table>
             <TableHeader className="sticky top-0 z-10 bg-background">
